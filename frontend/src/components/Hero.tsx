@@ -29,16 +29,33 @@ const Hero = () => {
     <div className="bg-[#050505]">
     <section className="relative w-full min-h-screen bg-[#050505] flex items-center overflow-hidden pt-28 md:pt-32">
       
-      <div className="absolute inset-0 z-0">
-        <div 
-          className="absolute inset-0 opacity-[0.4]"
-          style={{ 
-            backgroundImage: `radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${myBgImage})`, 
-            backgroundSize: '40px 40px,auto 100%',
-            backgroundPosition: 'center right',
-            backgroundRepeat: 'repeat, no-repeat',
-          }}
-        />
+<div className="absolute inset-0 z-0">
+  {/* 1. The Grey Dots (Stays same on all screens) */}
+  <div 
+    className="absolute inset-0 opacity-[0.2]"
+    style={{ 
+      backgroundImage: `radial-gradient(circle, #4d4d4d 1px, transparent 1px)`, 
+      backgroundSize: '40px 40px',
+    }}
+  />
+
+  {/* 2. Your Background Image (Responsive) */}
+  <div 
+    className="absolute inset-0 opacity-[0.4] 
+               bg-contain bg-top bg-no-repeat 
+               md:bg-auto md:bg-right md:h-full"
+    style={{ 
+      backgroundImage: `url(${myBgImage})`,
+      backgroundSize: 'contain', // Default for mobile
+    }}
+  />
+   
+   <style>{`
+    @media (min-width: 768px) {
+      .md-bg-custom { background-size: auto 100% !important; }
+    }
+  `}</style>
+  
 
         <motion.div 
           style={{

@@ -56,15 +56,29 @@ const highlights: { label: string; val: string }[] = [
       className="relative min-h-screen w-full flex items-center justify-center p-4 font-sans overflow-hidden bg-[#b0b3b8]"
     >
       
-      <div 
+     <div 
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ 
-          backgroundImage: `radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${myBgImage})`, 
-          backgroundSize: '40px 40px, auto 100%',
-          backgroundPosition: 'center right',
-          backgroundRepeat: 'repeat, no-repeat',
+          // Added a dark linear-gradient here to make white text more readable on mobile
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${myBgImage})`, 
+          backgroundRepeat: 'repeat, no-repeat, no-repeat',
         }}
-      />
+      >
+        <style>{`
+          #about .absolute.inset-0.z-0 {
+            /* Mobile Settings */
+            background-size: 100% 100%, 40px 40px, cover;
+            background-position: center, center, center bottom; /* Moves image to bottom on mobile */
+          }
+          @media (min-width: 1024px) {
+            #about .absolute.inset-0.z-0 {
+              /* Your Perfect Desktop Settings */
+              background-size: 100% 100%, 40px 40px, auto 100%;
+              background-position: center, center, center right;
+            }
+          }
+        `}</style>
+      </div>
 
       <motion.div key={isInView ? "viewing" : "hidden"} className="relative z-10 w-full max-w-6xl">
         <motion.div 

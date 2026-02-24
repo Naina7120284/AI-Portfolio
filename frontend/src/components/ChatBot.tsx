@@ -44,14 +44,14 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] font-sans">
+    <div className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-[100] font-sans">
       <AnimatePresence>
         {isOpen && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
-            className="bg-[#121212] border border-white/10 w-[380px] h-[550px] mb-4 rounded-2xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
+            className="bg-[#121212] border border-white/10 w-[calc(100vw-2rem)] sm:w-[380px] h-[500px] md:h-[550px] mb-4 rounded-2xl shadow-2xl flex flex-col overflow-hidden backdrop-blur-xl"
           >
             <div className="p-4 bg-gray-500 flex justify-between items-center shadow-md">
               <div className="flex items-center gap-2">

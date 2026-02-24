@@ -78,7 +78,7 @@ export default function WorkSection() {
 
   return (
     <section id="work" className="text-white">
-      <div ref={targetRef} className="relative h-[250vh] bg-[#b0b3b8]">
+      <div ref={targetRef} className="relative h-[250vh] md:h-[250vh] bg-[#b0b3b8] mobile-scroll-fix">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div 
             style={{ 
@@ -105,7 +105,7 @@ export default function WorkSection() {
                 key={project.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                className="relative h-[300px] w-[80vw] md:h-[450px] md:w-[700px] shrink-0 overflow-hidden rounded-[40px] border-2 border-[#d1f24d]/50 shadow-[0_0_40px_rgba(209,242,77,0.3)] bg-transparent"
+                className="relative h-[300px] w-[80vw] md:h-[450px] md:w-[700px] mobile-card-fix shrink-0 overflow-hidden rounded-[40px] border-2 border-[#d1f24d]/50 shadow-[0_0_40px_rgba(209,242,77,0.3)] bg-transparent"
               >
                 <img src={project.image} alt="" className="h-full w-full object-cover" />
               </motion.div>
@@ -126,7 +126,7 @@ export default function WorkSection() {
 />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="mb-20 text-left border-l-4 border-[#d1f24d] pl-8">
-            <h2 className="text-6xl md:text-5xl font-bold tracking-tighter uppercase">Selected Works</h2>
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter uppercase">Selected Works</h2>
             <p className="mt-4 text-white/70 text-lg">Detailed technical breakdown of my recent builds.</p>
           </div>
 
