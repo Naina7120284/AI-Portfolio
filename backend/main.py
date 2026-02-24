@@ -10,7 +10,7 @@ load_dotenv()
 app = FastAPI()
 
 origins = [ 
-    "http://127.0.0.1:5173",     
+    "http://127.0.0.1:8001",     
     "http://localhost:5173",      
     "https://ai-portfolio-6uo8.onrender.com"
 ]
