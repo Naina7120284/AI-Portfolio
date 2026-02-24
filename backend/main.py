@@ -11,7 +11,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:5174",            
-    "https://your-portfolio.vercel.app" 
+    "https://ai-portfolio-6uo8.onrender.com"
 ]
 
 app.add_middleware(
