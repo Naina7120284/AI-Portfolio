@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
-import { Menu, X, Github, Linkedin, FileText, Globe, Heart } from 'lucide-react';
+import { Menu, X, Github, Linkedin, FileText, Heart } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+const handleLinkClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <nav className="fixed w-full z-[100] bg-[#0f0f0f]/80 backdrop-blur-md border-b border-white/5">
@@ -30,7 +34,7 @@ const Navbar = () => {
         </div>
 
        <div className="hidden md:flex items-center gap-5">
-  <a 
+   <a 
     href="https://github.com/Naina7120284" 
     target="_blank" 
     rel="noopener noreferrer" 
@@ -71,7 +75,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-[#0f0f0f] border-b border-white/5 px-6 py-8 flex flex-col gap-6 animate-in slide-in-from-top">
           {['Home', 'About', 'Skills', 'Work', 'Contact'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="text-sm uppercase tracking-widest text-white">
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={handleLinkClick} className="text-sm uppercase tracking-widest text-white">
               {item}
             </a>
           ))}
