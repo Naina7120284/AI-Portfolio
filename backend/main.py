@@ -9,9 +9,9 @@ load_dotenv()
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:5174",      
-    "http://localhost:5174",      
+origins = [ 
+    "http://127.0.0.1:5173",     
+    "http://localhost:5173",      
     "https://ai-portfolio-6uo8.onrender.com"
 ]
 
@@ -22,6 +22,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+def read_root():
+    return {"status": "success", "message": "Backend is running successfully!"}
 
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
