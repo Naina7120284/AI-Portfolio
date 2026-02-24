@@ -4,12 +4,14 @@
 # Python virtual environment
 venv/
 env/
+node_modules/
 __pycache__/
 *.pyc
 
 # IDE settings
 .vscode/
 .idea/
+
 
 # Database files (if using local SQLite)
 *.sqlite3
