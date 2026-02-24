@@ -28,27 +28,27 @@ const projects = [
   { 
     id: 1, 
     title: "Echo-Beats", 
-    tech: ["MERN", "Socket.io", "Tailwind"], 
+    tech: ["MongoDB", "Express.js", "React.js", "Node.js"],
     image: echoBeatsImg, 
-    description: "A premium music streaming experience with real-time sync.", 
+    description: "A collaborative music streaming platform built with the MERN stack. I architected the database design and implemented secure frontend authentication. It features a seamless user experience for discovering and playing music with real-time sync capabilities.", 
     github: "https://github.com/Naina7120284/echobeats-project", 
     live: "https://echobeats-music-app.onrender.com/",
   },
   { 
     id: 2, 
     title: "Job-Board", 
-    tech: ["Node.js", "MongoDB", "Express"], 
+    tech: ["Node.js", "MongoDB", "Express", "HTML", "CSS", "JavaScript"],
     image: jobBoardImg,
-    description: "Full-cycle recruitment platform with advanced filtering.", 
+    description: "A comprehensive recruitment platform enabling job posting and application tracking through RESTful APIs. It features role-based access control for recruiters and seekers, advanced filtering, and full database integration for a robust full-cycle hiring experience.", 
     github: "https://github.com/Naina7120284/CODESOFT-TASK-1", 
     live: "https://job-board-fojg.onrender.com/" 
   },
   { 
     id: 3, 
     title: "Quiz-Maker", 
-    tech: ["React", "Firebase", "Node.js"], 
+    tech: ["JavaScript", "HTML5", "TailwindCSS", "Node.js", "MongoDB", "Express"], 
     image: quizBoardImg, 
-    description: "Assessment tool with real-time score tracking.", 
+    description: "An interactive assessment tool designed for creating and managing real-time quizzes. I developed dynamic forms for quiz creation and implemented logic for real-time score tracking, providing a clean and intuitive user interface for personalized assessments.", 
     github: "https://github.com/Naina7120284/CODSOFT-TASK-2-Online-Quiz-Maker-", 
     live: "https://quiz-maker-tcrm.onrender.com" 
   },
@@ -57,12 +57,11 @@ const projects = [
     title: "Parkinson Prediction", 
     tech: ["Python", "ML", "Streamlit"], 
     image: parkinsonImg, 
-    description: "Deep learning model for early medical diagnosis.", 
+    description: "A machine learning model that predicts Parkinson’s disease using voice-based biomedical features. I utilized Scikit-learn for model training, SMOTE for handling imbalanced data, and deployed the final result as a real-time diagnostic tool on Streamlit.", 
     github: "https://github.com/Naina7120284/parkinsons-disease-ml", 
     live: "https://parkinson-prediction.onrender.com" 
   },
 ];
-
 export default function WorkSection() {
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -127,11 +126,11 @@ export default function WorkSection() {
 />
         <div className="relative z-10 mx-auto max-w-7xl px-6">
           <div className="mb-20 text-left border-l-4 border-[#d1f24d] pl-8">
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase">Selected Works</h2>
+            <h2 className="text-6xl md:text-5xl font-bold tracking-tighter uppercase">Selected Works</h2>
             <p className="mt-4 text-white/70 text-lg">Detailed technical breakdown of my recent builds.</p>
           </div>
 
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-15 md:grid-cols-2 lg:px-24">
             {projects.map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
@@ -159,7 +158,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative flex flex-col overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 transition-all hover:bg-white/10"
+     className="group relative flex flex-col overflow-hidden rounded-[24px] border border-white/10 bg-white/5 p-4 transition-all hover:bg-white/10 max-w-lg mx-auto"
     >
       <motion.div
         className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
@@ -171,7 +170,17 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <img src={project.image} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
       </div>
       <h3 className="text-[#d1f24d] text-2xl font-bold mb-3">{project.title}</h3>
-      <p className="text-white/50 text-sm mb-6 flex-1">{project.description}</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {project.tech.map((skill) => (
+          <span 
+            key={skill} 
+            className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 border border-white/10 text-[#d1f24d] rounded-md"
+          >
+            {skill}
+          </span>
+        ))}
+      </div>
+     <p className="text-white/500 text-base mb-4 flex-1">{project.description}</p>
       <div className="flex gap-4">
        <a 
     href={project.live} 

@@ -6,9 +6,10 @@ import { useRef } from "react";
 const skillsData = [
     { category: "Frontend", items: ["HTML","CSS", "React","TypeScript", "Tailwind"] },
     { category: "Backend", items: ["Node.js", "REST API", "WebSockets", "JWT"] },
+    { category: "Machine Learning", items: ["Scikit-Learn", "Python", "Pandas", "SMOTE", "Data Visualization", "Predictive Modeling"] },
     { category: "Database", items: ["MongoDB",  "PostgreSQL"] },
-    { category: "DevOps", items: ["Docker", "Render"] },
     { category: "Gen AI", items: ["OpenAI", "Gemini", "Google Copilot"] },
+    { category: "DevOps", items: ["Docker", "Render", "Git"] },
 ];
 
 export default function Skills() {

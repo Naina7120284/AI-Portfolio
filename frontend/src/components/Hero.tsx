@@ -66,7 +66,7 @@ const Hero = () => {
         <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       </div>
 
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 z-30 relative flex flex-col md:flex-row items-center justify-between h-full">
+      <div className="container mx-auto px-8 md:px-16 lg:pl-40 z-30 relative flex flex-col md:flex-row items-center justify-between h-full">
         <div className="max-w-2xl text-center md:text-left pt-10 md:pt-0">
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
@@ -78,7 +78,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1 
-             className="text-white text-5xl md:text-6xl font-black tracking-tighter leading-[1.1] mb-6"
+             className="text-white text-5xl md:text-6xl font-bold tracking-tighter leading-[1.1] mb-6"
               >
           <motion.div
                initial={{ opacity: 0, y: 20 }}
@@ -119,7 +119,7 @@ const Hero = () => {
         </div>
 
         <div 
-          className="relative w-full md:w-[40%] h-[50vh] md:h-[80vh] flex justify-center md:justify-end items-end mt-10 md:mt-0"
+          className="relative w-full md:w-[35%] h-[50vh] md:h-[75vh] flex justify-center md:justify-end items-end mt-10 md:mt-0"
           style={{ perspective: "1200px" }}
         >
           <motion.div
