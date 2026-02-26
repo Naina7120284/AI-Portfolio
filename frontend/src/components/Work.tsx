@@ -32,7 +32,7 @@ const projects = [
     image: echoBeatsImg, 
     description: "A collaborative music streaming platform built with the MERN stack. I architected the database design and implemented secure frontend authentication. It features a seamless user experience for discovering and playing music with real-time sync capabilities.", 
     github: "https://github.com/Naina7120284/echobeats-project", 
-    live: "https://echobeats-music-app.onrender.com/",
+    live: "https://echobeats-project-1.onrender.com",
   },
   { 
     id: 2, 

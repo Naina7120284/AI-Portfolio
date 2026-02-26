@@ -72,15 +72,51 @@ const handleLinkClick = () => {
       </div>
 
       {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <div className="md:hidden bg-[#0f0f0f] border-b border-white/5 px-6 py-8 flex flex-col gap-6 animate-in slide-in-from-top">
-          {['Home', 'About', 'Skills', 'Work', 'Contact'].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} onClick={handleLinkClick} className="text-sm uppercase tracking-widest text-white">
-              {item}
-            </a>
-          ))}
-        </div>
-      )}
+{isOpen && (
+  <div className="md:hidden bg-[#0f0f0f] border-b border-white/5 px-6 py-8 flex flex-col gap-8 animate-in slide-in-from-top">
+    {/* Navigation Links */}
+    <div className="flex flex-col gap-6">
+      {['Home', 'About', 'Skills', 'Work', 'Contact'].map((item) => (
+        <a 
+          key={item} 
+          href={`#${item.toLowerCase()}`} 
+          onClick={handleLinkClick} 
+          className="text-sm uppercase tracking-widest text-white hover:text-lime-500 transition-colors"
+        >
+          {item}
+        </a>
+      ))}
+    </div>
+
+    {/* ADDED: Social Icons Row for Mobile */}
+    <div className="flex items-center gap-6 pt-6 border-t border-white/10">
+      <a 
+        href="https://github.com/Naina7120284" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-gray-300 hover:text-white"
+      >
+        <Github size={24} />
+      </a>
+      <a 
+        href="https://www.linkedin.com/in/naina-shukla-15406a260/" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-gray-300 hover:text-white"
+      >
+        <Linkedin size={24} />
+      </a>
+      <a 
+        href="/Naina_Shukla_Resume.pdf" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-gray-300 hover:text-white"
+      >
+        <FileText size={24} />
+      </a>
+    </div>
+  </div>
+)}
     </nav>
   );
 };
