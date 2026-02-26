@@ -1,8 +1,8 @@
 "use client";
-import React, { useRef, useState } from 'react'; // Added useRef and useState
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, CheckCircle } from 'lucide-react';
-import emailjs from '@emailjs/browser'; // Make sure to npm install @emailjs/browser
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   // --- 1. LOGIC START ---

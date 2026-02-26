@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import AboutPage from './components/About'; // Import it here
+import AboutPage from './components/About';
 import Skills from './components/Skills';
 import ChatBot from './components/ChatBot';
 import Contact from './components/Contact';

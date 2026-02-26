@@ -35,8 +35,8 @@ const TypewriterText = ({ text, delay = 0, trigger }: { text: string; delay?: nu
 };
 
 const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
-  const internalRef = React.useRef<HTMLDivElement>(null);
-  const isInView = useInView(internalRef, { amount: 0.2 });
+const internalRef = React.useRef<HTMLDivElement>(null);
+const isInView = useInView(internalRef, { amount: 0.2, once: false });
   
 const highlights: { label: string; val: string }[] = [
   { label: "Full Stack Development", val: "" },
@@ -59,7 +59,7 @@ const highlights: { label: string; val: string }[] = [
      <div 
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ 
-          // Added a dark linear-gradient here to make white text more readable on mobile
+
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${BgImage})`, 
           backgroundRepeat: 'repeat, no-repeat, no-repeat',
           backgroundSize: 'cover',
@@ -82,7 +82,15 @@ const highlights: { label: string; val: string }[] = [
         `}</style>
       </div>
 
-      <motion.div key={isInView ? "viewing" : "hidden"} className="relative z-10 w-full max-w-6xl">
+      <motion.div 
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 20 }
+     }}
+      className="relative z-10 w-full max-w-6xl"
+   >
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
