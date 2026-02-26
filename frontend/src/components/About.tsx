@@ -34,9 +34,9 @@ const TypewriterText = ({ text, delay = 0, trigger }: { text: string; delay?: nu
   );
 };
 
-const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
-const internalRef = React.useRef<HTMLDivElement>(null);
-const isInView = useInView(internalRef, { amount: 0.2, once: false });
+  const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
+  const internalRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView(internalRef, { amount: 0.2 });
   
 const highlights: { label: string; val: string }[] = [
   { label: "Full Stack Development", val: "" },
@@ -59,7 +59,7 @@ const highlights: { label: string; val: string }[] = [
      <div 
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ 
-
+          // Added a dark linear-gradient here to make white text more readable on mobile
           backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${BgImage})`, 
           backgroundRepeat: 'repeat, no-repeat, no-repeat',
           backgroundSize: 'cover',
@@ -82,15 +82,7 @@ const highlights: { label: string; val: string }[] = [
         `}</style>
       </div>
 
-      <motion.div 
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={{
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 20 }
-     }}
-      className="relative z-10 w-full max-w-6xl"
-   >
+      <motion.div key={isInView ? "viewing" : "hidden"} className="relative z-10 w-full max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -147,7 +139,7 @@ const highlights: { label: string; val: string }[] = [
             transition={{ type: "spring", stiffness: 40, damping: 15, delay: 0.2 }}
             className="flex-1 relative flex items-center justify-center lg:justify-end"
           >
-            <div className="relative z-10 w-full md:w-[420px] h-[350px] rounded-[40px] border border-lime-500/20 bg-gray/10 backdrop-blur-2xl shadow-xl overflow-hidden group">
+            <div className="relative z-10 w-full md:w-[420px] min-h-[420px] lg:h-[350px] rounded-[40px] border border-lime-500/20 bg-gray/10 backdrop-blur-2xl shadow-xl overflow-hidden group flex flex-col lg:block">
               
               <div className="relative z-30 p-6 md:p-10 h-full flex flex-col justify-start md:justify-center">
                <motion.h3 
@@ -176,7 +168,7 @@ const highlights: { label: string; val: string }[] = [
                 initial={{ y: 200 }}
                 animate={isInView ? { y: 20 } : {}}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="absolute right-0 bottom-0 w-[280px] object-contain"
+                className="relative lg:absolute mx-auto lg:mx-0 right-0 bottom-0 w-[220px] sm:w-[260px] lg:w-[280px] object-contain mt-6 lg:mt-0"
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, white 50%, transparent 100%)'
