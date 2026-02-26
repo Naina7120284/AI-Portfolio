@@ -139,13 +139,13 @@ const highlights: { label: string; val: string }[] = [
             transition={{ type: "spring", stiffness: 40, damping: 15, delay: 0.2 }}
             className="flex-1 relative flex items-center justify-center lg:justify-end"
           >
-            <div className="relative z-10 w-full md:w-[420px] min-h-[350px] lg:h-[350px] rounded-[40px] border border-lime-500/20 bg-gray/10 backdrop-blur-2xl shadow-xl overflow-hidden group flex flex-col lg:block">
+            <div className="relative z-10 w-full max-w-[420px] md:w-[420px] h-[300px] md:h-[350px] rounded-[40px] border border-lime-500/20 bg-gray/10 backdrop-blur-2xl shadow-xl overflow-hidden group">
               
               <div className="relative z-30 p-6 md:p-10 h-full flex flex-col justify-start md:justify-center">
                <motion.h3 
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }} 
                   transition={{ delay: 0.5 }}
-                   className="text-white text-[22px] md:text-[19px] font-extrabold uppercase tracking-[0.15em] mb-6 font-sans drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]"
+                   className="text-white text-[22px] md:text-[19px] font-bold  tracking-[0.15em] mb-6 font-sans drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]"
                 >Quick Highlights</motion.h3>
 
                 <div className="space-y-3 md:space-y-4">
@@ -168,7 +168,7 @@ const highlights: { label: string; val: string }[] = [
                 initial={{ y: 200 }}
                 animate={isInView ? { y: 20 } : {}}
                 transition={{ duration: 1, delay: 0.5 }}
-                className="relative lg:absolute right-0 bottom-0 mx-auto lg:mx-0 mt-4 lg:mt-0 w-[180px] sm:w-[210px] lg:w-[280px] object-contain"
+                className="absolute right-2 bottom-0 w-[170px] sm:w-[200px] md:w-[240px] lg:w-[280px] object-contain"
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, white 50%, transparent 100%)'
