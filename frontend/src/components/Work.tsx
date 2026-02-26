@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState } from 'react';
 import slateBg from "../assets/slate-texture.jpg";
+import BgImage from '../assets/ab.jpg';
 import { 
   motion, 
   useScroll, 
@@ -82,12 +83,12 @@ export default function WorkSection() {
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div 
             style={{ 
-            x: bgTextX,
-            backgroundImage: `url('https://www.google.com/imgres?q=light%20aesthetic%20images%20bg&imgurl=https%3A%2F%2Fmarketplace.canva.com%2FEAGVI0bTFss%2F1%2F0%2F1131w%2Fcanva-cream-and-pink-minimalist-aesthetic-background-document-a4-kspvLvbS_mA.jpg&imgrefurl=https%3A%2F%2Fwww.canva.com%2Ftemplates%2Fs%2Faesthetic-background%2F&docid=CurwsyZZCB3VHM&tbnid=sUF9xyCzAubv0M&vet=12ahUKEwjBg9DhhvCSAxXeVmwGHdEwE0Y4ChCc8A56BAg6EAE..i&w=1131&h=1600&hcb=2&ved=2ahUKEwjBg9DhhvCSAxXeVmwGHdEwE0Y4ChCc8A56BAg6EAE')`, // Replace with your URL
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
+            backgroundPositionX: bgTextX,
+            backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.4), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${BgImage})`, 
+            backgroundSize: '100% 100%, 40px 40px, 1200px auto',
+            backgroundRepeat: 'repeat',
           }} 
-           className="absolute inset-0 opacity-20 select-none pointer-events-none w-[120%]" 
+           className="absolute inset-0 opacity-20 select-none pointer-events-none w-[400%] h-full" 
            >
           </motion.div>
 

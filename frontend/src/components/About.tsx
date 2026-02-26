@@ -1,7 +1,7 @@
 "use client";
 import React, { forwardRef } from 'react';
 import myPic from "../assets/naina-profile.png";
-import myBgImage from '../assets/img.jpg';
+import BgImage from '../assets/ab.jpg';
 import { motion, useInView } from 'framer-motion';
 
 const TypewriterText = ({ text, delay = 0, trigger }: { text: string; delay?: number; trigger: boolean }) => {
@@ -53,28 +53,30 @@ const highlights: { label: string; val: string }[] = [
         internalRef.current = node;
       }} 
       id="about" 
-      className="relative min-h-screen w-full flex items-center justify-center p-4 font-sans overflow-hidden bg-[#b0b3b8]"
+      className="relative min-h-screen w-full flex items-center justify-center font-sans overflow-hidden bg-[#b0b3b8]"
     >
       
      <div 
         className="absolute inset-0 z-0 pointer-events-none" 
         style={{ 
           // Added a dark linear-gradient here to make white text more readable on mobile
-          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${myBgImage})`, 
+          backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.2), transparent), radial-gradient(circle, #4d4d4d 1px, transparent 1px), url(${BgImage})`, 
           backgroundRepeat: 'repeat, no-repeat, no-repeat',
+          backgroundSize: 'cover',
         }}
       >
         <style>{`
           #about .absolute.inset-0.z-0 {
             /* Mobile Settings */
             background-size: 100% 100%, 40px 40px, cover;
-            background-position: center, center, center bottom; /* Moves image to bottom on mobile */
+            background-position: center;
+            background-attachment: fixed; /* Moves image to bottom on mobile */
           }
           @media (min-width: 1024px) {
             #about .absolute.inset-0.z-0 {
               /* Your Perfect Desktop Settings */
               background-size: 100% 100%, 40px 40px, auto 100%;
-              background-position: center, center, center right;
+              background-position: center;
             }
           }
         `}</style>
@@ -95,26 +97,27 @@ const highlights: { label: string; val: string }[] = [
           />
         </motion.div>
         <div className="relative overflow-hidden rounded-[55px] border border-lime-500/40 border-2 border-[#d1f24d]/50 shadow-[0_0_40px_rgba(209,242,77,0.3)] hadow-6xl flex flex-col lg:flex-row items-center p-10 md:p-20 gap-12 min-h-[500px] backdrop-blur-xl bg-white/5" >
-          
           <div className="flex-[1.2] space-y-6 z-10">
-            <p className="text-gray-800 text-xl md:text-2xl leading-relaxed">
+            <p className="text-gray-300 text-xl md:text-2xl leading-relaxed">
               <TypewriterText text="I'm " delay={0.8} trigger={isInView} />
     <motion.span 
       initial={{ opacity: 0 }} 
       animate={isInView ? { opacity: 1 } : { opacity: 0 }} 
       transition={{ delay: 1 }}
-      className="font-bold text-white bg-white/10 px-2 rounded-md"
+      className="font-bold text-white px-2 rounded-md"
     >
       Naina
     </motion.span>
+    </p>
+    <p className="text-gray-100/90 text-lg md:text-xl leading-relaxed">
     <TypewriterText 
-      text=", a Computer Science student and Full Stack Developer passionate about building intelligent digital experiences." 
+      text="A Computer Science student and Full Stack Developer passionate about building intelligent digital experiences." 
       delay={1.2} 
       trigger={isInView} 
     />
-  </p>
+    </p>
 
-  <p className="text-gray-700/80 text-lg md:text-xl leading-relaxed italic border-l-2 border-[#d1f24d] pl-4">
+  <p className="text-gray-200/80 text-lg md:text-xl leading-relaxed italic border-l-2 border-[#d1f24d] pl-4">
     <TypewriterText 
       text="My curiosity drives me to explore how systems work beneath the surface, whether it’s structuring databases, designing APIs, or experimenting with data-driven solutions." 
       delay={3.5} 
@@ -122,7 +125,7 @@ const highlights: { label: string; val: string }[] = [
     />
   </p>
   
-  <p className="text-gray-700 text-lg md:text-xl leading-relaxed">
+  <p className="text-gray-100/90 text-lg md:text-xl leading-relaxed">
     <TypewriterText 
       text="I believe great software is not just functional — it should be thoughtful, efficient, and impactful." 
       delay={6.5} 
@@ -138,23 +141,23 @@ const highlights: { label: string; val: string }[] = [
           >
             <div className="relative z-10 w-full md:w-[420px] h-[350px] rounded-[40px] border border-lime-500/20 bg-gray/10 backdrop-blur-2xl shadow-xl overflow-hidden group">
               
-              <div className="relative z-30 p-10 h-full flex flex-col justify-center">
+              <div className="relative z-30 p-6 md:p-10 h-full flex flex-col justify-start md:justify-center">
                <motion.h3 
                   animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }} 
-                  transition={{ delay: 0.8 }}
+                  transition={{ delay: 0.5 }}
                    className="text-white text-[22px] md:text-[19px] font-extrabold uppercase tracking-[0.15em] mb-6 font-sans drop-shadow-[0_2px_10px_rgba(255,255,255,0.2)]"
                 >Quick Highlights</motion.h3>
 
-                <div className="space-y-4">
+                <div className="space-y-3 md:space-y-4">
                   {highlights.map((item, i) => (
                     <motion.div 
                       key={i} 
                       initial={{ opacity: 0, x: -10 }}
                       animate={isInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ delay: 1.5 + (i * 0.1) }}
-                      className="border-b border-white/20 pb-1 w-fit min-w-[140px] mb-4"
+                      className="border-b border-white/20 pb-1 w-fit min-w-[120px] mb-3"
                     >
-                      <span className="text-sm text-[#d1f24d] font-medium text-[18px]">{item.label}</span>
+                      <span className="text-[14px] md:text-[18px] text-[#d1f24d] font-medium">{item.label}</span>
                     </motion.div>
                   ))}
                 </div>
