@@ -4,12 +4,12 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
 
 const skillsData = [
-    { category: "Frontend", items: ["HTML","CSS", "React","TypeScript", "Tailwind"] },
-    { category: "Backend", items: ["Node.js", "REST API", "WebSockets", "JWT"] },
-    { category: "Machine Learning", items: ["Scikit-Learn", "Python", "Pandas", "SMOTE", "Data Visualization", "Predictive Modeling"] },
-    { category: "Database", items: ["MongoDB",  "PostgreSQL"] },
-    { category: "Gen AI", items: ["OpenAI", "Gemini", "Google Copilot"] },
-    { category: "DevOps", items: ["Docker", "Render", "Git"] },
+    { category: "Frontend", items: ["HTML","CSS", "ReactJs", "Next.js", "TypeScript", "Tailwind", "App Router (Next.js)", "Responsive UI Design"] },
+    { category: "Backend", items: ["Node.js", "FastAPI", "REST API", "WebSockets", "JWT", "API Integration"] },
+    { category: "Machine Learning", items: ["Scikit-Learn", "Python", "Data Visualization", "Predictive Modeling", "OpenAI API", "Vector Embeddings"] },
+    { category: "Database", items: ["MongoDB",  "PostgreSQL", "Supabase"] },
+    { category: "Gen AI", items: ["OpenAI", "Gemini", "Google Copilot", "Prompt Engineering", "AI Chatbots"] },
+    { category: "DevOps", items: ["Docker", "Render", "Git", "GitHub", "Docker", "Postman", "VS Code"] },
 ];
 
 export default function Skills() {

@@ -10,6 +10,7 @@ import {
   useMotionValue 
 } from 'framer-motion';
 
+import aiCareerAssistantImg from "../assets/ai.png";
 import echoBeatsImg from "../assets/echobeats.png"; 
 import jobBoardImg from "../assets/jobboard.png";
 import parkinsonImg from "../assets/parkinson.png";
@@ -26,8 +27,17 @@ interface Project {
 }
 
 const projects = [
-  { 
+   { 
     id: 1, 
+    title: "AI Career assistant", 
+    tech: ["Next.js", "FastAPI","Python","Supabase","TailwindCSS","OpenAI"],
+    image: aiCareerAssistantImg, 
+    description: "An AI-powered career development platform that helps users optimize resumes, receive ATS analysis, generate cover letters, prepare for interviews, explore personalized career roadmaps, and interact with an intelligent career assistant. Built with Next.js, FastAPI, Supabase, and AI-driven recommendation systems to provide real-time career guidance and professional growth insights.", 
+    github: "https://github.com/Naina7120284/AI-Career-Assistant", 
+    live: "https://ai-career-assistant-1-9nbp.onrender.com",
+  },
+  { 
+    id: 2, 
     title: "Echo-Beats", 
     tech: ["MongoDB", "Express.js", "React.js", "Node.js"],
     image: echoBeatsImg, 
@@ -36,7 +46,7 @@ const projects = [
     live: "https://echobeats-project-1.onrender.com",
   },
   { 
-    id: 2, 
+    id: 3, 
     title: "Job-Board", 
     tech: ["Node.js", "MongoDB", "Express", "HTML", "CSS", "JavaScript"],
     image: jobBoardImg,
@@ -45,7 +55,7 @@ const projects = [
     live: "https://job-board-fojg.onrender.com/" 
   },
   { 
-    id: 3, 
+    id: 4, 
     title: "Quiz-Maker", 
     tech: ["JavaScript", "HTML5", "TailwindCSS", "Node.js", "MongoDB", "Express"], 
     image: quizBoardImg, 
@@ -54,7 +64,7 @@ const projects = [
     live: "https://quiz-maker-tcrm.onrender.com" 
   },
   { 
-    id: 4, 
+    id: 5, 
     title: "Parkinson Prediction", 
     tech: ["Python", "ML", "Streamlit"], 
     image: parkinsonImg, 

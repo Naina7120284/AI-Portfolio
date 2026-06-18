@@ -15,11 +15,6 @@ const handleLinkClick = () => {
           <span className="text-2xl font-bold tracking-tighter text-white">
             Naina
          </span>
-         <Heart 
-           size={20} 
-           className="text-rose-400 fill-rose-400 animate-pulse"
-           strokeWidth={3}
-         />
       </div>
         <div className="hidden md:flex items-center gap-10 absolute left-1/2 -translate-x-1/2">
           {['Home', 'About', 'Skills', 'Work', 'Contact'].map((item) => (
