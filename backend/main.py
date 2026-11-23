@@ -86,6 +86,13 @@ EXPERIENCE & INTERNSHIPS:
    - Developed full-stack web projects remotely.
 
 KEY PROJECTS:
+- **PayrollPro (Real client project – Payroll web app)**
+  - Built for a contract-staffing company to run monthly payroll for factory workers.
+  - Imports client attendance sheets; calculates wages, overtime and statutory deductions (PF, ESIC, PT); checks totals against the client's own sheet; blocks finalizing while any worker is unaccounted for.
+  - Generates salary slips, invoices and bank payment files, with role-based access and an audit trail.
+  - Tech: Python, FastAPI, SQLAlchemy, SQLite, Jinja2, openpyxl, Docker; 56 automated tests.
+  - Source code is private (client work); a read-only demo with synthetic data is linked on the portfolio. Never name the client company.
+
 - **Parkinson’s Disease Prediction (Machine Learning)**
   - Built a predictive ML model using biomedical voice features.
   - Deployed as a real-time web app on Render.
