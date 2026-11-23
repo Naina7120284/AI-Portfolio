@@ -119,7 +119,7 @@ async def chat(request: ChatRequest):
     try:
 
         response = client.chat.completions.create(
-            model="meta-llama/llama-3-8b-instruct",
+            model="meta-llama/llama-3.1-8b-instruct",
             messages=[
                 {"role": "system", "content": RESUME_CONTEXT},
                 {"role": "user", "content": request.message}
@@ -133,4 +133,4 @@ async def chat(request: ChatRequest):
         
     except Exception as e:
         print(f"API Error: {e}") 
-        return {"reply": f"Technical hiccup: {str(e)}"}
+        return {"reply": "Sorry, the assistant is unavailable right now. Please try again in a minute, or use the contact form."}
