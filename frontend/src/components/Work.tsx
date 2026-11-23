@@ -15,6 +15,7 @@ import echoBeatsImg from "../assets/echobeats.png";
 import jobBoardImg from "../assets/jobboard.png";
 import parkinsonImg from "../assets/parkinson.png";
 import quizBoardImg from "../assets/quizboard.png";
+import payrollProImg from "../assets/payrollpro.png";
 
 interface Project {
   id: number;
@@ -22,11 +23,33 @@ interface Project {
   tech: string[];
   image: any;
   description: string;
-  github: string;
+  github?: string;
   live: string;
+  featured?: boolean;
+  tagline?: string;
+  badge?: string;
+  stats?: { value: string; label: string }[];
+  note?: string;
 }
 
-const projects = [
+const projects: Project[] = [
+  {
+    id: 0,
+    featured: true,
+    title: "PayrollPro",
+    tagline: "End-to-end payroll for contract-staffing teams.",
+    badge: "Real client project",
+    tech: ["Python", "FastAPI", "SQLAlchemy", "SQLite", "Jinja2", "openpyxl", "Docker"],
+    image: payrollProImg,
+    description: "A payroll web app built for a staffing company that runs monthly wages for factory workers. It imports client attendance sheets, calculates wages, overtime and statutory deductions (PF, ESIC, PT), checks totals against the client's own sheet, and won't finalize while any worker is unaccounted for. It produces salary slips, invoices and bank payment files, with role-based access and an audit trail.",
+    live: "https://payrollpro-demo.onrender.com",
+    stats: [
+      { value: "5-step", label: "Month-end workflow" },
+      { value: "56", label: "Automated tests" },
+      { value: "₹0", label: "Variance vs client sheet" },
+    ],
+    note: "Private source (client work) · Read-only demo with synthetic data",
+  },
    { 
     id: 1, 
     title: "AI Career assistant", 
@@ -46,6 +69,15 @@ const projects = [
     live: "https://echobeats-project-1.onrender.com",
   },
   { 
+    id: 5, 
+    title: "Parkinson Prediction", 
+    tech: ["Python", "ML", "Streamlit"], 
+    image: parkinsonImg, 
+    description: "A machine learning model that predicts Parkinson’s disease using voice-based biomedical features. I utilized Scikit-learn for model training, SMOTE for handling imbalanced data, and deployed the final result as a real-time diagnostic tool on Streamlit.", 
+    github: "https://github.com/Naina7120284/parkinsons-disease-ml", 
+    live: "https://parkinson-prediction.onrender.com" 
+  },
+  { 
     id: 3, 
     title: "Job-Board", 
     tech: ["Node.js", "MongoDB", "Express", "HTML", "CSS", "JavaScript"],
@@ -62,15 +94,6 @@ const projects = [
     description: "An interactive assessment tool designed for creating and managing real-time quizzes. I developed dynamic forms for quiz creation and implemented logic for real-time score tracking, providing a clean and intuitive user interface for personalized assessments.", 
     github: "https://github.com/Naina7120284/CODSOFT-TASK-2-Online-Quiz-Maker-", 
     live: "https://quiz-maker-tcrm.onrender.com" 
-  },
-  { 
-    id: 5, 
-    title: "Parkinson Prediction", 
-    tech: ["Python", "ML", "Streamlit"], 
-    image: parkinsonImg, 
-    description: "A machine learning model that predicts Parkinson’s disease using voice-based biomedical features. I utilized Scikit-learn for model training, SMOTE for handling imbalanced data, and deployed the final result as a real-time diagnostic tool on Streamlit.", 
-    github: "https://github.com/Naina7120284/parkinsons-disease-ml", 
-    live: "https://parkinson-prediction.onrender.com" 
   },
 ];
 export default function WorkSection() {
@@ -141,8 +164,12 @@ export default function WorkSection() {
             <p className="mt-4 text-white/70 text-lg">Detailed technical breakdown of my recent builds.</p>
           </div>
 
+          {projects.filter((p) => p.featured).map((project) => (
+            <FeaturedCard key={project.id} project={project} />
+          ))}
+
           <div className="grid grid-cols-1 gap-15 md:grid-cols-2 lg:px-24">
-            {projects.map((project, index) => (
+            {projects.filter((p) => !p.featured).map((project, index) => (
               <ProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
@@ -201,6 +228,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   >
     Live Demo
   </a>
+        {project.github && (
         <a 
     href={project.github} 
     target="_blank" 
@@ -209,6 +237,95 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   >
     <span>GitHub</span>
   </a>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+function FeaturedCard({ project }: { project: Project }) {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect();
+    mouseX.set(clientX - left);
+    mouseY.set(clientY - top);
+  }
+
+  return (
+    <motion.div
+      onMouseMove={handleMouseMove}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="group relative mb-16 overflow-hidden rounded-[32px] border border-[#d1f24d]/25 bg-white/[0.04] p-4 md:p-6 lg:mx-24 backdrop-blur-sm"
+    >
+      <motion.div
+        className="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+        style={{
+          background: useMotionTemplate`radial-gradient(600px circle at ${mouseX}px ${mouseY}px, rgba(209, 242, 77, 0.08), transparent 80%)`,
+        }}
+      />
+      <div className="relative flex flex-col gap-8 md:flex-row md:items-center">
+        <div className="relative md:w-[55%]">
+          <div className="pointer-events-none absolute -inset-6 rounded-full bg-[#d1f24d]/10 blur-3xl" />
+          <motion.div
+            whileHover={{ scale: 1.025 }}
+            transition={{ duration: 0.35 }}
+            className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0b0b0b]"
+          >
+            <img src={project.image} alt={`${project.title} payroll register screen`} className="w-full h-auto object-contain" />
+          </motion.div>
+        </div>
+
+        <div className="md:w-[45%]">
+          <div className="mb-4 flex flex-wrap items-center gap-3">
+            <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-white/50">01 / Featured project</span>
+            {project.badge && (
+              <span className="rounded-full border border-[#d1f24d]/40 bg-[#d1f24d]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#d1f24d]">
+                {project.badge}
+              </span>
+            )}
+          </div>
+          <h3 className="text-3xl md:text-4xl font-bold text-[#d1f24d]">{project.title}</h3>
+          {project.tagline && <p className="mt-2 text-lg text-white/90">{project.tagline}</p>}
+          <p className="mt-4 text-sm md:text-base text-white/70 leading-relaxed">{project.description}</p>
+
+          <div className="mt-5 flex flex-wrap gap-2">
+            {project.tech.map((skill) => (
+              <span
+                key={skill}
+                className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-white/10 border border-white/10 text-[#d1f24d] rounded-md"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          {project.stats && (
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {project.stats.map((s) => (
+                <div key={s.label} className="rounded-xl border border-white/10 bg-white/5 px-3 py-3">
+                  <div className="text-xl md:text-2xl font-bold text-white">{s.value}</div>
+                  <div className="mt-1 text-[11px] leading-tight text-white/50">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-6 flex flex-wrap items-center gap-4">
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 bg-[#d1f24d] text-black text-sm font-bold rounded-full transition-all duration-300 hover:bg-[#b8d642] hover:scale-105 active:scale-95 shadow-[0_0_15px_rgba(209,242,77,0.3)]"
+            >
+              Live Demo
+            </a>
+            {project.note && <span className="text-xs text-white/50">{project.note}</span>}
+          </div>
+        </div>
       </div>
     </motion.div>
   );
